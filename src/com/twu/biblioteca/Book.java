@@ -25,16 +25,27 @@ public class Book {
         return this.year;
     }
 
-    boolean getAvailability() {
+    boolean isCheckedOut() {
         return this.checkedOut;
     }
 
-    String getBook() {
-        if (!getAvailability()) {
-            return (getName() + " | " + getAuthor() + " | " + getYear()+"\n");
+    String getBook(int i) {
+        if (!isCheckedOut()) {
+            return (i+". "+getName() + " | " + getAuthor() + " | " + getYear()+"\n");
         }
         else {
             return("");
         }
+    }
+
+    public String checkBook() {
+        if(!isCheckedOut()) {
+            this.checkedOut = true;
+            return ("Thank you! Enjoy the book");
+        }
+        else {
+            return ("Sorry, that book is not available");
+        }
+
     }
 }
