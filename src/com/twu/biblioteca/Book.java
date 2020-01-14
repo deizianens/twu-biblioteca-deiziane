@@ -38,6 +38,15 @@ public class Book {
         }
     }
 
+    String getCheckedBook(int i) {
+        if (isCheckedOut()) {
+            return (i+". "+getName() + " | " + getAuthor() + " | " + getYear()+"\n");
+        }
+        else {
+            return("");
+        }
+    }
+
     public String checkBook() {
         if(!isCheckedOut()) {
             this.checkedOut = true;
@@ -47,5 +56,15 @@ public class Book {
             return ("Sorry, that book is not available");
         }
 
+    }
+
+    public String returnBook() {
+        if(isCheckedOut()) {
+            this.checkedOut = false;
+            return ("Thank you for returning the book");
+        }
+        else {
+            return ("That is not a valid book to return.");
+        }
     }
 }

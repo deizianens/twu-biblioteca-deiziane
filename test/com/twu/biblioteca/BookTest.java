@@ -27,5 +27,16 @@ public class BookTest {
         assertEquals(book2.checkBook(),"Sorry, that book is not available");
     }
 
+    @Test
+    public void returnBookTest() {
+        book1.returnBook();
+        assertEquals(book1.getBook(0),"0. Crime and Punishment | Fyodor Dostoyevsky | 1866\n");
+    }
+
+    @Test
+    public void returnBookSuccessTest() {
+        assertEquals(book2.returnBook(), "Thank you for returning the book");
+        assertEquals(book1.returnBook(), "That is not a valid book to return.");
+    }
 
 }
