@@ -2,10 +2,13 @@ package com.twu.biblioteca;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class BibliotecaApp {
 
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
         System.out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!\n");
 
         Book pp = new Book("The Little Prince", "Antoine de Saint-Exupéry", 1943);
@@ -17,7 +20,13 @@ public class BibliotecaApp {
         bookList.add(ventos);
         bookList.add(gt);
 
-        getBooksList(bookList);
+        System.out.println("Choose one option:\n1.See list of books");
+        Integer option = input.nextInt();
+
+        switch (option) {
+            case 1:
+                getBooksList(bookList);
+        }
     }
 
      static void getBooksList(List<Book> bookList) {
