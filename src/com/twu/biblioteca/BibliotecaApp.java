@@ -8,9 +8,9 @@ public class BibliotecaApp {
     public static void main(String[] args) {
         System.out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!\n");
 
-        Book pp = new Book("O Pequeno Príncipe");
-        Book ventos = new Book("O Morro dos Ventos Uivantes");
-        Book gt = new Book("Guerra dos Tronos");
+        Book pp = new Book("The Little Prince", "Antoine de Saint-Exupéry", 1943);
+        Book ventos = new Book("Pride and Prejudice", "Jane Austen", 1813);
+        Book gt = new Book("Game of Thrones", "George RR Martin", 1996);
 
         List<Book> bookList = new ArrayList<Book>();
         bookList.add(pp);
@@ -22,7 +22,7 @@ public class BibliotecaApp {
 
      static void getBooksList(List<Book> bookList) {
         for (Book temp : bookList) {
-            System.out.println(temp.getName());
+            System.out.println(temp.getBook());
         }
     }
 }
