@@ -11,9 +11,9 @@ public class BibliotecaApp {
 
         System.out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
 
-        Book pp = new Book("The Little Prince", "Antoine de Saint-Exupéry", 1943);
-        Book ventos = new Book("Pride and Prejudice", "Jane Austen", 1813);
-        Book gt = new Book("Game of Thrones", "George RR Martin", 1996);
+        Book pp = new Book("The Little Prince", "Antoine de Saint-Exupéry", 1943, false);
+        Book ventos = new Book("Pride and Prejudice", "Jane Austen", 1813, true);
+        Book gt = new Book("Game of Thrones", "George RR Martin", 1996, false);
 
         List<Book> bookList = new ArrayList<Book>();
         bookList.add(pp);
@@ -22,7 +22,7 @@ public class BibliotecaApp {
 
         while(true) {
             System.out.println("\nChoose one option:\n1.See list of books\n0.Quit\n");
-            Integer option = input.nextInt();
+            int option = input.nextInt();
 
             switch (option) {
                 case 1:
@@ -38,7 +38,7 @@ public class BibliotecaApp {
 
      static void getBooksList(List<Book> bookList) {
         for (Book temp : bookList) {
-            System.out.println(temp.getBook());
+            System.out.print(temp.getBook());
         }
     }
 }
