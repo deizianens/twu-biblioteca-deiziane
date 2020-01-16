@@ -3,10 +3,10 @@ package com.twu.biblioteca;
 public class Book {
     private String name;
     private String author;
-    private Integer year;
+    private String year;
     private boolean checkedOut;
 
-    public Book(String name, String author, Integer year, boolean checkedOut) {
+    public Book(String name, String author, String year, boolean checkedOut) {
         this.name = name;
         this.author = author;
         this.year = year;
@@ -21,12 +21,18 @@ public class Book {
         return this.author;
     }
 
-    Integer getYear() {
+    String getYear() {
         return this.year;
     }
 
     boolean isCheckedOut() {
         return this.checkedOut;
+    }
+
+    static Book createBook(String line){
+        String[] bookInfo = line.split(",");
+        Book book = new Book(bookInfo[0], bookInfo[1], bookInfo[2], false);
+        return book;
     }
 
     String getBook(int i) {
