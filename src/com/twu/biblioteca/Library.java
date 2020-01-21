@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Item;
 
 import java.util.ArrayList;
@@ -10,26 +9,18 @@ public class Library {
 
     private List<Item> itemList = new ArrayList<Item>();
 
-    public void addItem(Book book) {
-        this.itemList.add(book);
+    public void addItem(Item item) {
+        this.itemList.add(item);
     }
 
-    public void getitemList() {
+    public void getItemsList() {
         for(int i = 0; i < itemList.size(); i++) {
             System.out.println(itemList.get(i).toString(i));
         }
     }
 
-
     public String checkOutItem(int index) {
-        if(!itemList.get(index).isCheckedOut()) {
-            itemList.get(index).checkItem();
-            return ("Thank you! Enjoy the book");
-        }
-        else {
-            return ("Sorry, that book is not available");
-        }
-
+        return(itemList.get(index).resultMessage());
     }
 
     public String returnItem(int bookIndex) {

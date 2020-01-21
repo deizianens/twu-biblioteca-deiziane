@@ -8,4 +8,10 @@ public interface Item {
     void checkItem();
 
     void returnItem();
+
+    static Item createItem() {
+        return null;
+    }
+
+    String resultMessage();
 }

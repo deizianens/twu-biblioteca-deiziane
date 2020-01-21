@@ -39,5 +39,16 @@ public class Book implements Item {
         this.checkedOut = false;
     }
 
+    @Override
+    public String resultMessage() {
+        if(!isCheckedOut()) {
+            checkItem();
+            return ("Thank you! Enjoy the book");
+        }
+        else {
+            return ("Sorry, that book is not available");
+        }
+    }
+
 
 }

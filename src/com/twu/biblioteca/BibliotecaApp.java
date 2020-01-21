@@ -1,6 +1,7 @@
-package com.twu.biblioteca;git add * :/
+package com.twu.biblioteca;
 
 import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.model.Movie;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -17,15 +18,15 @@ public class BibliotecaApp {
     public static void main(String[] args) throws Exception {
 
         System.out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
-        readBooks("src/com/twu/biblioteca/files/books.txt");
+        readItems("src/com/twu/biblioteca/file/books.txt", "src/com/twu/biblioteca/file/movies.txt");
 
         while(true) {
-            System.out.println("\nChoose one option:\n1.See list of books\n2.Get a book\n3.Return a book\n0.Quit\n");
+            System.out.println("\nChoose one option:\n1.See list of books\n2.Get a book\n3.Return a book\n4.See list of movies\n0.Quit\n");
             int option = input.nextInt();
 
             switch (option) {
                 case 1:
-//                    books.getBookList();
+                    books.getItemsList();
                     break;
                 case 2:
 //                    checkOutBook();
@@ -41,12 +42,17 @@ public class BibliotecaApp {
         }
     }
 
-    static void readBooks(String path) throws Exception {
-        File file = new File(path);
-        BufferedReader reader = new BufferedReader(new FileReader(file));
+    static void readItems(String path, String moviePath) throws Exception {
+        File bookFile = new File(path);
+        File movieFile = new File(moviePath);
+        BufferedReader reader = new BufferedReader(new FileReader(bookFile));
+        BufferedReader reader2 = new BufferedReader(new FileReader(movieFile));
 
         String line;
         while ((line = reader.readLine()) != null)
             books.addItem(Book.createBook(line));
+
+        while ((line = reader2.readLine()) != null)
+            movies.addItem(Movie.createMovie(line));
     }
 }

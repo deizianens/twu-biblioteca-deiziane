@@ -23,13 +23,13 @@ public class LibraryTest {
     }
 
     @Test
-    public void checkoutBookSuccessTest() {
+    public void checkoutSuccessTest() {
         assertEquals(lib.checkOutItem(0),"Thank you! Enjoy the book");
         assertEquals(lib.checkOutItem(1),"Sorry, that book is not available");
     }
 
     @Test
-    public void returnBookSuccessTest() {
+    public void returnSuccessTest() {
         assertEquals(lib.returnItem(1), "Thank you for returning the book");
         assertEquals(lib.returnItem(0), "That is not a valid book to return.");
     }
