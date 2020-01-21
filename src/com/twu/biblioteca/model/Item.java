@@ -1,5 +1,11 @@
-package com.twu.biblioteca.models;
+package com.twu.biblioteca.model;
 
 public interface Item {
-    String toString();
+    String toString(int i);
+
+    boolean isCheckedOut();
+
+    void checkItem();
+
+    void returnItem();
 }

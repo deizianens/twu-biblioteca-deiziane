@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.model.Book;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,20 +17,20 @@ public class LibraryTest {
 
     @Before
     public void init() {
-        lib.addBook(book1);
-        lib.addBook(book2);
-        lib.addBook(book3);
+        lib.addItem(book1);
+        lib.addItem(book2);
+        lib.addItem(book3);
     }
 
     @Test
     public void checkoutBookSuccessTest() {
-        assertEquals(lib.checkOutBook(0),"Thank you! Enjoy the book");
-        assertEquals(lib.checkOutBook(1),"Sorry, that book is not available");
+        assertEquals(lib.checkOutItem(0),"Thank you! Enjoy the book");
+        assertEquals(lib.checkOutItem(1),"Sorry, that book is not available");
     }
 
     @Test
     public void returnBookSuccessTest() {
-        assertEquals(lib.returnBook(1), "Thank you for returning the book");
-        assertEquals(lib.returnBook(0), "That is not a valid book to return.");
+        assertEquals(lib.returnItem(1), "Thank you for returning the book");
+        assertEquals(lib.returnItem(0), "That is not a valid book to return.");
     }
 }
