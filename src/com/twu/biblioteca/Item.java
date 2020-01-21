@@ -1,4 +1,4 @@
 package com.twu.biblioteca;
 
-public class Media {
+public interface Item {
 }
