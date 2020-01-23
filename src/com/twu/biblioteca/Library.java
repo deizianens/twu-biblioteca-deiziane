@@ -4,8 +4,10 @@ import com.twu.biblioteca.model.Item;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Library {
+    static Scanner input = new Scanner(System.in);
 
     private List<Item> itemList = new ArrayList<Item>();
 
@@ -13,9 +15,19 @@ public class Library {
         this.itemList.add(item);
     }
 
-    public void getItemsList() {
+    public void getAvailableItemsList() {
         for(int i = 0; i < itemList.size(); i++) {
-            System.out.println(itemList.get(i).toString(i));
+            if(!itemList.get(i).isCheckedOut()) {
+                System.out.println(itemList.get(i).toString(i));
+            }
+        }
+    }
+
+    public void getNotAvailableItemsList() {
+        for(int i = 0; i < itemList.size(); i++) {
+            if(itemList.get(i).isCheckedOut()) {
+                System.out.println(itemList.get(i).toString(i));
+            }
         }
     }
 

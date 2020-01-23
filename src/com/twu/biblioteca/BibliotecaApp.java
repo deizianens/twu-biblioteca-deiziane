@@ -26,10 +26,10 @@ public class BibliotecaApp {
 
             switch (option) {
                 case 1:
-                    books.getItemsList();
+                    books.getAvailableItemsList();
                     break;
                 case 2:
-//                    checkOutBook();
+                    checkBook();
                     break;
                 case 3:
 //                    returnBook();
@@ -42,7 +42,7 @@ public class BibliotecaApp {
         }
     }
 
-    static void readItems(String path, String moviePath) throws Exception {
+    public static void readItems(String path, String moviePath) throws Exception {
         File bookFile = new File(path);
         File movieFile = new File(moviePath);
         BufferedReader reader = new BufferedReader(new FileReader(bookFile));
@@ -54,5 +54,12 @@ public class BibliotecaApp {
 
         while ((line = reader2.readLine()) != null)
             movies.addItem(Movie.createMovie(line));
+    }
+
+    public static void checkBook(){
+        System.out.println("Choose a book: ");
+        books.getAvailableItemsList();
+        int index = input.nextInt();
+        System.out.println(books.checkOutItem(index));
     }
 }
