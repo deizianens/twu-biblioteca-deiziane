@@ -19,7 +19,7 @@ public abstract class Item {
         return itemYear;
     }
 
-    boolean isCheckedOut() {
+    public boolean isCheckedOut() {
         return this.checkedOut;
     };
 
