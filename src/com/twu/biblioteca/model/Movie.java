@@ -1,18 +1,13 @@
 package com.twu.biblioteca.model;
 
-public class Movie  implements Item {
-    private String movieName;
-    private String movieYear;
+public class Movie  extends Item {
     private String movieDirector;
     private String movieRating;
-    private boolean checkedOut;
 
     public Movie(String movieName, String movieYear, String movieDirector, String movieRating, boolean checkedOut) {
-        this.movieName = movieName;
-        this.movieYear = movieYear;
+        super(movieName, movieYear, checkedOut);
         this.movieDirector = movieDirector;
         this.movieRating = movieRating;
-        this.checkedOut = checkedOut;
     }
 
     public static Movie createMovie(String line) {
@@ -23,22 +18,7 @@ public class Movie  implements Item {
 
     @Override
     public String toString(int i) {
-        return (+i+". "+this.movieName + " | " + this.movieYear + " | " + this.movieDirector + " | " + this.movieRating);
-    }
-
-    @Override
-    public boolean isCheckedOut() {
-        return this.checkedOut;
-    }
-
-    @Override
-    public void checkItem() {
-        this.checkedOut = true;
-    }
-
-    @Override
-    public void returnItem() {
-        this.checkedOut = false;
+        return (+i+". "+super.getItemName() + " | " + super.getItemYear() + " | " + this.movieDirector + " | " + this.movieRating);
     }
 
     @Override

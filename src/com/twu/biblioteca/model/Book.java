@@ -1,16 +1,11 @@
 package com.twu.biblioteca.model;
 
-public class Book implements Item {
-    private String bookName;
+public class Book extends Item {
     private String bookAuthor;
-    private String bookYear;
-    private boolean checkedOut;
 
     public Book(String bookName, String bookAuthor, String bookYear, boolean checkedOut) {
-        this.bookName = bookName;
+        super(bookName, bookYear, checkedOut);
         this.bookAuthor = bookAuthor;
-        this.bookYear = bookYear;
-        this.checkedOut = checkedOut;
     }
 
     public static Book createBook(String line) {
@@ -21,23 +16,9 @@ public class Book implements Item {
 
     @Override
     public String toString(int i) {
-        return (+i+". "+this.bookName + " | " + this.bookAuthor + " | " + this.bookYear);
+        return (+i+". "+super.getItemName() + " | " + this.bookAuthor + " | " + super.getItemYear());
     }
 
-    @Override
-    public boolean isCheckedOut() {
-        return this.checkedOut;
-    }
-
-    @Override
-    public void checkItem() {
-        this.checkedOut = true;
-    }
-
-    @Override
-    public void returnItem() {
-        this.checkedOut = false;
-    }
 
     @Override
     public String resultMessage() {
