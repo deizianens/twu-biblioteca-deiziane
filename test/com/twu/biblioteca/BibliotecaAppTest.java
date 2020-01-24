@@ -11,9 +11,9 @@ public class BibliotecaAppTest {
         User user = new User("999-9999", "pass");
     }
 
-    @Test
-    public void loginTest() {
-
-    }
+//    @Test
+//    public void loginTest() {
+//
+//    }
 
 }
