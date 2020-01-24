@@ -18,7 +18,7 @@ public class BibliotecaApp {
 
     static LibrarySection books = new LibrarySection();
     static LibrarySection movies = new LibrarySection();
-    public List<User> users = new ArrayList();
+    static List<User> users = new ArrayList();
 
     public static void main(String[] args) throws Exception {
 
@@ -88,7 +88,16 @@ public class BibliotecaApp {
         System.out.println(books.returnItem(index));
     }
 
-    public static void login(){
+    public static void registerUser() {
+        users.add(new User("User","999-9999", "pass"));
+        users.add(new User("User2","123-9999", "pass1"));
+    }
 
+    public static boolean isValidUser(String userLibraryNumber, String userPassword){
+        return false;
+    }
+
+    public List<User> getUsers() {
+        return users;
     }
 }

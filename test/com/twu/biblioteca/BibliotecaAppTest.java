@@ -1,19 +1,28 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.domain.User;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 public class BibliotecaAppTest {
+
+    BibliotecaApp app = new BibliotecaApp();
+
     @Before
     public void init() {
-        User user = new User("999-9999", "pass");
+       app.registerUser();
     }
 
-//    @Test
-//    public void loginTest() {
-//
-//    }
+    @Test
+    public void testValidUser() {
+        assertThat(app.isValidUser(app.getUsers().get(0).getLibraryNumber(), app.getUsers().get(0).getPassword()), is(false));
+    }
+
+    @Test
+    public void testInvalidUser() {
+        assertThat(app.isValidUser("092-2332", "pas"), is(false));
+    }
 
 }
