@@ -1,6 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.application;
 
-import com.twu.biblioteca.model.Item;
+import com.twu.biblioteca.domain.Item;
 
 import java.util.ArrayList;
 import java.util.List;

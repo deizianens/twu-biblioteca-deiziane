@@ -1,4 +1,4 @@
-package com.twu.biblioteca.model;
+package com.twu.biblioteca.domain;
 
 public class Movie  extends Item {
     private String movieDirector;

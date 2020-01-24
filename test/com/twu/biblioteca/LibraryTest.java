@@ -1,15 +1,16 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.model.Book;
-import com.twu.biblioteca.model.Movie;
+import com.twu.biblioteca.application.Library;
+import com.twu.biblioteca.domain.Book;
+import com.twu.biblioteca.domain.Movie;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertEquals;
 
 public class LibraryTest {
+
+
 
     Library lib = new Library();
     Book book1 = new Book("Crime and Punishment", "Fyodor Dostoyevsky", "1866", false);
@@ -25,11 +26,12 @@ public class LibraryTest {
         lib.addItem(movie1);
     }
 
+
     @Test
     public void checkoutSuccessTest() {
-        assertEquals(lib.checkOutItem(0),"Thank you! Enjoy the book");
-        assertEquals(lib.checkOutItem(1),"Sorry, that book is not available");
-        assertEquals(lib.checkOutItem(3),"Thank you! Enjoy the movie");
+        assertEquals(lib.checkOutItem(0), "Thank you! Enjoy the book");
+        assertEquals(lib.checkOutItem(1), "Sorry, that book is not available");
+        assertEquals(lib.checkOutItem(3), "Thank you! Enjoy the movie");
     }
 
     @Test

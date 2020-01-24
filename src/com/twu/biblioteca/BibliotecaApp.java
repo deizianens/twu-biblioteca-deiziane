@@ -1,7 +1,8 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.model.Book;
-import com.twu.biblioteca.model.Movie;
+import com.twu.biblioteca.application.Library;
+import com.twu.biblioteca.domain.Book;
+import com.twu.biblioteca.domain.Movie;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -18,10 +19,10 @@ public class BibliotecaApp {
     public static void main(String[] args) throws Exception {
 
         System.out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
-        readItems("src/com/twu/biblioteca/file/books.txt", "src/com/twu/biblioteca/file/movies.txt");
+        readItems("src/com/twu/biblioteca/resources/books.txt", "src/com/twu/biblioteca/resources/movies.txt");
 
         while(true) {
-            System.out.println("\nChoose one option:\n1.See list of books\n2.Get a book\n3.Return a book\n4.See list of movies\n0.Quit\n");
+            System.out.println("\nChoose one option:\n1.See list of books\n2.Get a book\n3.Return a book\n4.See list of movies\n5.Get a movie\n0.Quit\n");
             int option = input.nextInt();
 
             switch (option) {
@@ -32,7 +33,13 @@ public class BibliotecaApp {
                     checkBook();
                     break;
                 case 3:
-//                    returnBook();
+                    returnBook();
+                    break;
+                case 4:
+                    movies.getAvailableItemsList();
+                    break;
+                case 5:
+                    checkMovie();
                     break;
                 case 0:
                     System.exit(0);
@@ -61,5 +68,19 @@ public class BibliotecaApp {
         books.getAvailableItemsList();
         int index = input.nextInt();
         System.out.println(books.checkOutItem(index));
+    }
+
+    public static void checkMovie(){
+        System.out.println("Choose a movie: ");
+        movies.getAvailableItemsList();
+        int index = input.nextInt();
+        System.out.println(movies.checkOutItem(index));
+    }
+
+    public static void returnBook() {
+        System.out.println("Choose the book you want to return: ");
+        books.getNotAvailableItemsList();
+        int index = input.nextInt();
+        System.out.println(books.returnItem(index));
     }
 }

@@ -1,4 +1,4 @@
-package com.twu.biblioteca.model;
+package com.twu.biblioteca.domain;
 
 public abstract class Item {
     private String itemName;
