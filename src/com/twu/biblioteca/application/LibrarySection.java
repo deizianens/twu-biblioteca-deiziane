@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Library {
+public class LibrarySection {
     static Scanner input = new Scanner(System.in);
 
     private List<Item> itemList = new ArrayList<Item>();

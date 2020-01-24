@@ -1,20 +1,24 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.application.Library;
+import com.twu.biblioteca.application.LibrarySection;
 import com.twu.biblioteca.domain.Book;
 import com.twu.biblioteca.domain.Movie;
+import com.twu.biblioteca.domain.User;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class BibliotecaApp {
 
     static Scanner input = new Scanner(System.in);
 
-    static Library books = new Library();
-    static Library movies = new Library();
+    static LibrarySection books = new LibrarySection();
+    static LibrarySection movies = new LibrarySection();
+    public List<User> users = new ArrayList();
 
     public static void main(String[] args) throws Exception {
 
@@ -82,5 +86,9 @@ public class BibliotecaApp {
         books.getNotAvailableItemsList();
         int index = input.nextInt();
         System.out.println(books.returnItem(index));
+    }
+
+    public static void login(){
+
     }
 }

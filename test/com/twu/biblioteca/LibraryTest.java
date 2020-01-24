@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.application.Library;
+import com.twu.biblioteca.application.LibrarySection;
 import com.twu.biblioteca.domain.Book;
 import com.twu.biblioteca.domain.Movie;
 import org.junit.Before;
@@ -10,9 +10,7 @@ import static org.junit.Assert.assertEquals;
 
 public class LibraryTest {
 
-
-
-    Library lib = new Library();
+    LibrarySection lib = new LibrarySection();
     Book book1 = new Book("Crime and Punishment", "Fyodor Dostoyevsky", "1866", false);
     Book book2 = new Book("Test", "Me", "2020", true);
     Book book3 = new Book("Test2", "Me", "2010", false);
