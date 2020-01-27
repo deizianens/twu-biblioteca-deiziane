@@ -94,6 +94,10 @@ public class BibliotecaApp {
     }
 
     public static boolean isValidUser(String userLibraryNumber, String userPassword){
+        for(User user: users){
+            if(user.getLibraryNumber() == userLibraryNumber && user.getPassword() == userPassword)
+                return true;
+        }
         return false;
     }
 

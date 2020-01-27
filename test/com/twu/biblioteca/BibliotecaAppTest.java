@@ -17,7 +17,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void testValidUser() {
-        assertThat(app.isValidUser(app.getUsers().get(0).getLibraryNumber(), app.getUsers().get(0).getPassword()), is(false));
+        assertThat(app.isValidUser(app.getUsers().get(0).getLibraryNumber(), app.getUsers().get(0).getPassword()), is(true));
     }
 
     @Test
