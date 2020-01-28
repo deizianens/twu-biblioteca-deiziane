@@ -117,7 +117,7 @@ public class BibliotecaApp {
         System.out.println("Choose the book you want to return: ");
         books.getUserItemsList(currentUser);
         int index = input.nextInt();
-        System.out.println(books.returnItem(index));
+        System.out.println(books.returnItem(index, currentUser));
     }
 
     public static void registerUser() {

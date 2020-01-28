@@ -36,9 +36,10 @@ public class LibrarySection {
         return(item.resultMessage());
     }
 
-    public String returnItem(int bookIndex) {
-        if(itemList.get(bookIndex).isCheckedOut()) {
+    public String returnItem(int bookIndex, User currentUser) {
+        if(itemList.get(bookIndex).isCheckedOut() && itemList.get(bookIndex).getBookUser().equals(currentUser)) {
             itemList.get(bookIndex).returnItem();
+            itemList.get(bookIndex).setUser(new User());
             return ("Thank you for returning the book");
         }
         else {
