@@ -25,46 +25,63 @@ public class BibliotecaApp {
         registerUser();
 
         while(true) {
-            System.out.println("Digit your credentials\nLibrary Number");
-            String libraryNumber = input.next();
-            System.out.println("Password:");
-            String password = input.next();
+            System.out.println("1.Login\n2.Exit");
+            int option = input.nextInt();
 
-            if (isValidUser(libraryNumber, password) == true) {
-                System.out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
-                readItems("src/com/twu/biblioteca/resources/books.txt", "src/com/twu/biblioteca/resources/movies.txt");
+            if(option == 1) {
+                if (login()) {
+                    System.out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
+                    readItems("src/com/twu/biblioteca/resources/books.txt", "src/com/twu/biblioteca/resources/movies.txt");
 
-                while (true) {
-                    System.out.println("\nChoose one option:\n1.See list of books\n2.Get a book\n3.Return a book\n4.See list of movies\n5.Get a movie\n6.See my account info\n0.Quit\n");
-                    int option = input.nextInt();
-
-                    switch (option) {
-                        case 1:
-                            books.getAvailableItemsList();
-                            break;
-                        case 2:
-                            checkBook();
-                            break;
-                        case 3:
-                            returnBook();
-                            break;
-                        case 4:
-                            movies.getAvailableItemsList();
-                            break;
-                        case 5:
-                            checkMovie();
-                            break;
-                        case 6:
-                            System.out.println(currentUser.toString());
-                        case 0:
-                            System.exit(0);
-                        default:
-                            System.out.println("Please select a valid option!\n");
+                    while (true) {
+                        showMenu();
                     }
+                } else {
+                    System.out.println("Invalid user, please digit your credentials again.");
                 }
-            } else {
-                System.out.println("Invalid user, please digit your credentials again.");
             }
+            else {
+                System.out.println("Bye!");
+                System.exit(0);
+            }
+        }
+    }
+
+    public static boolean login() {
+        System.out.println("Digit your credentials\nLibrary Number");
+        String libraryNumber = input.next();
+        System.out.println("Password:");
+        String password = input.next();
+
+        return(isValidUser(libraryNumber, password));
+    }
+
+    public static void showMenu() {
+        System.out.println("\nChoose one option:\n1.See list of books\n2.Get a book\n3.Return a book\n4.See list of movies\n5.Get a movie\n6.See my account info\n0.Quit\n");
+        int option = input.nextInt();
+
+        switch (option) {
+            case 1:
+                books.getAvailableItemsList();
+                break;
+            case 2:
+                checkBook();
+                break;
+            case 3:
+                returnBook();
+                break;
+            case 4:
+                movies.getAvailableItemsList();
+                break;
+            case 5:
+                checkMovie();
+                break;
+            case 6:
+                System.out.println(currentUser.toString());
+            case 0:
+                System.exit(0);
+            default:
+                System.out.println("Please select a valid option!\n");
         }
     }
 

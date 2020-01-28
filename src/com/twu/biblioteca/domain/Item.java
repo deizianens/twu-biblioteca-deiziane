@@ -4,6 +4,7 @@ public abstract class Item {
     private String itemName;
     private String itemYear;
     private boolean checkedOut;
+    private User bookUser;
 
     public Item(String itemName, String itemYear, boolean checkedOut){
         this.itemName = itemName;
@@ -25,6 +26,7 @@ public abstract class Item {
 
     public void checkItem() {
         this.checkedOut = true;
+//        this.bookUser = user;
     }
 
     public void returnItem() {
