@@ -19,6 +19,7 @@ public class BibliotecaApp {
     static LibrarySection books = new LibrarySection();
     static LibrarySection movies = new LibrarySection();
     static List<User> users = new ArrayList();
+    static User currentUser = new User();
 
     public static void main(String[] args) throws Exception {
         registerUser();
@@ -34,7 +35,7 @@ public class BibliotecaApp {
                 readItems("src/com/twu/biblioteca/resources/books.txt", "src/com/twu/biblioteca/resources/movies.txt");
 
                 while (true) {
-                    System.out.println("\nChoose one option:\n1.See list of books\n2.Get a book\n3.Return a book\n4.See list of movies\n5.Get a movie\n0.Quit\n");
+                    System.out.println("\nChoose one option:\n1.See list of books\n2.Get a book\n3.Return a book\n4.See list of movies\n5.Get a movie\n6.See my account info\n0.Quit\n");
                     int option = input.nextInt();
 
                     switch (option) {
@@ -53,6 +54,8 @@ public class BibliotecaApp {
                         case 5:
                             checkMovie();
                             break;
+                        case 6:
+                            System.out.println(currentUser.toString());
                         case 0:
                             System.exit(0);
                         default:
@@ -101,14 +104,16 @@ public class BibliotecaApp {
     }
 
     public static void registerUser() {
-        users.add(new User("User","999-9999", "pass"));
-        users.add(new User("User2","123-9999", "pass1"));
+        users.add(new User("User","user@mail.com", "(31)1234-3322","999-9999", "pass"));
+        users.add(new User("User2","user2@mail.com", "(31)2931-2221","123-9999", "pass1"));
     }
 
     public static boolean isValidUser(String userLibraryNumber, String userPassword){
         for(User user: users){
-            if(userLibraryNumber.equals(user.getLibraryNumber()) && userPassword.equals(user.getPassword()))
+            if(userLibraryNumber.equals(user.getLibraryNumber()) && userPassword.equals(user.getPassword())) {
+                currentUser = user;
                 return true;
+            }
         }
         return false;
     }
