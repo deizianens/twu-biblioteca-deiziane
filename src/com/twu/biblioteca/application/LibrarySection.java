@@ -1,13 +1,12 @@
 package com.twu.biblioteca.application;
 
 import com.twu.biblioteca.domain.Item;
+import com.twu.biblioteca.domain.User;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class LibrarySection {
-    static Scanner input = new Scanner(System.in);
 
     private List<Item> itemList = new ArrayList<Item>();
 
@@ -23,16 +22,18 @@ public class LibrarySection {
         }
     }
 
-    public void getNotAvailableItemsList() {
+    public void getUserItemsList(User currentUser) {
         for(int i = 0; i < itemList.size(); i++) {
-            if(itemList.get(i).isCheckedOut()) {
+            if(itemList.get(i).isCheckedOut() && itemList.get(i).getBookUser().equals(currentUser)) {
                 System.out.println(itemList.get(i).toString(i));
             }
         }
     }
 
-    public String checkOutItem(int index) {
-        return(itemList.get(index).resultMessage());
+    public String checkOutItem(int index, User currentUser) {
+        Item item = itemList.get(index);
+        item.setUser(currentUser);
+        return(item.resultMessage());
     }
 
     public String returnItem(int bookIndex) {

@@ -103,19 +103,19 @@ public class BibliotecaApp {
         System.out.println("Choose a book: ");
         books.getAvailableItemsList();
         int index = input.nextInt();
-        System.out.println(books.checkOutItem(index));
+        System.out.println(books.checkOutItem(index, currentUser));
     }
 
     public static void checkMovie(){
         System.out.println("Choose a movie: ");
         movies.getAvailableItemsList();
         int index = input.nextInt();
-        System.out.println(movies.checkOutItem(index));
+        System.out.println(movies.checkOutItem(index, currentUser));
     }
 
     public static void returnBook() {
         System.out.println("Choose the book you want to return: ");
-        books.getNotAvailableItemsList();
+        books.getUserItemsList(currentUser);
         int index = input.nextInt();
         System.out.println(books.returnItem(index));
     }

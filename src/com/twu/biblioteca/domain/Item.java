@@ -16,6 +16,10 @@ public abstract class Item {
         return itemName;
     }
 
+    public User getBookUser() {
+        return bookUser;
+    }
+
     public String getItemYear() {
         return itemYear;
     }
@@ -26,7 +30,10 @@ public abstract class Item {
 
     public void checkItem() {
         this.checkedOut = true;
-//        this.bookUser = user;
+    }
+
+    public void setUser(User user) {
+        this.bookUser = user;
     }
 
     public void returnItem() {
