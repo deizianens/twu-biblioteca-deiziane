@@ -14,6 +14,8 @@ import java.util.Scanner;
 
 public class BibliotecaApp {
 
+    static final int LIST_BOOKS = 1, CHECKOUT_BOOKS = 2, RETURN_BOOKS = 3, LIST_MOVIES = 4, CHECKOUT_MOVIES = 5, RETURN_MOVIES = 6, ACCOUNT_INFO = 7,  EXIT = 0;
+
     static Scanner input = new Scanner(System.in);
 
     static LibrarySection books = new LibrarySection();
@@ -25,7 +27,7 @@ public class BibliotecaApp {
         registerUser();
 
         while(true) {
-            System.out.println("1.Login\n2.Exit");
+            System.out.println("1.Login\n0.Exit");
             int option = input.nextInt();
 
             if(option == 1) {
@@ -57,27 +59,31 @@ public class BibliotecaApp {
     }
 
     public static void showMenu() {
-        System.out.println("\nChoose one option:\n1.See list of books\n2.Get a book\n3.Return a book\n4.See list of movies\n5.Get a movie\n6.See my account info\n0.Quit\n");
+        System.out.println("\nChoose one option:\n1.See list of books\n2.Get a book\n3.Return a book\n4.See list of movies\n5.Get a movie\n6. Return a movie\n7. See my account info\n0.Quit\n");
         int option = input.nextInt();
 
         switch (option) {
-            case 1:
+            case LIST_BOOKS:
                 books.getAvailableItemsList();
                 break;
-            case 2:
+            case CHECKOUT_BOOKS:
                 checkBook();
                 break;
-            case 3:
+            case RETURN_BOOKS:
                 returnBook();
                 break;
-            case 4:
+            case LIST_MOVIES:
                 movies.getAvailableItemsList();
                 break;
-            case 5:
+            case CHECKOUT_MOVIES:
                 checkMovie();
                 break;
-            case 6:
+            case RETURN_MOVIES:
+                returnMovies();
+                break;
+            case ACCOUNT_INFO:
                 System.out.println(currentUser.toString());
+                break;
             case 0:
                 System.exit(0);
             default:
@@ -118,6 +124,13 @@ public class BibliotecaApp {
         books.getUserItemsList(currentUser);
         int index = input.nextInt();
         System.out.println(books.returnItem(index, currentUser));
+    }
+
+    public static void returnMovies() {
+        System.out.println("Choose the movie you want to return: ");
+        movies.getUserItemsList(currentUser);
+        int index = input.nextInt();
+        System.out.println(movies.returnItem(index, currentUser));
     }
 
     public static void registerUser() {
