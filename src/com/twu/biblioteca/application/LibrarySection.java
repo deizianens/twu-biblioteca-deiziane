@@ -24,7 +24,7 @@ public class LibrarySection {
 
     public void getUserItemsList(User currentUser) {
         for(int i = 0; i < itemList.size(); i++) {
-            if(itemList.get(i).isCheckedOut() && itemList.get(i).getBookUser().equals(currentUser)) {
+            if(itemList.get(i).isCheckedOut() && itemList.get(i).getItemUser().equals(currentUser)) {
                 System.out.println(itemList.get(i).toString(i));
             }
         }
@@ -33,17 +33,11 @@ public class LibrarySection {
     public String checkOutItem(int index, User currentUser) {
         Item item = itemList.get(index);
         item.setUser(currentUser);
-        return(item.resultMessage());
+        return(item.checkoutResultMessage());
     }
 
-    public String returnItem(int bookIndex, User currentUser) {
-        if(itemList.get(bookIndex).isCheckedOut() && itemList.get(bookIndex).getBookUser().equals(currentUser)) {
-            itemList.get(bookIndex).returnItem();
-            itemList.get(bookIndex).setUser(new User());
-            return ("Thank you for returning the book");
-        }
-        else {
-            return ("That is not a valid book to return.");
-        }
+    public String returnItem(int index, User currentUser) {
+        Item item = itemList.get(index);
+        return(item.returnResultMessage(currentUser));
     }
 }

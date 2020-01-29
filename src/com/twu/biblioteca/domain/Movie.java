@@ -22,7 +22,7 @@ public class Movie  extends Item {
     }
 
     @Override
-    public String resultMessage() {
+    public String checkoutResultMessage() {
         if(!isCheckedOut()) {
             checkItem();
             return ("Thank you! Enjoy the movie");
@@ -32,4 +32,15 @@ public class Movie  extends Item {
         }
     }
 
+    @Override
+    public String returnResultMessage(User currentUser) {
+        if(!isCheckedOut() && super.getItemUser().equals(currentUser)) {
+            returnItem();
+            setUser(new User());
+            return ("Thank you for returning the movie");
+        }
+        else {
+            return ("That is not a valid movie to return.");
+        }
+    }
 }

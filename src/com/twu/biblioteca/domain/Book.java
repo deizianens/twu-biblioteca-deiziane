@@ -21,13 +21,25 @@ public class Book extends Item {
 
 
     @Override
-    public String resultMessage() {
+    public String checkoutResultMessage() {
         if(!isCheckedOut()) {
             checkItem();
             return ("Thank you! Enjoy the book");
         }
         else {
             return ("Sorry, that book is not available");
+        }
+    }
+
+    @Override
+    public String returnResultMessage(User currentUser) {
+        if(isCheckedOut() && super.getItemUser().equals(currentUser)) {
+            returnItem();
+            setUser(new User());
+            return ("Thank you for returning the book");
+        }
+        else {
+            return ("That is not a valid book to return.");
         }
     }
 

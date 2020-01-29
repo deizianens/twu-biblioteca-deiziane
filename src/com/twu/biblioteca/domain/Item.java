@@ -4,20 +4,21 @@ public abstract class Item {
     private String itemName;
     private String itemYear;
     private boolean checkedOut;
-    private User bookUser;
+    private User itemUser;
 
     public Item(String itemName, String itemYear, boolean checkedOut){
         this.itemName = itemName;
         this.itemYear = itemYear;
         this.checkedOut = checkedOut;
+        this.itemUser = new User();
     }
 
     public String getItemName() {
         return itemName;
     }
 
-    public User getBookUser() {
-        return bookUser;
+    public User getItemUser() {
+        return itemUser;
     }
 
     public String getItemYear() {
@@ -33,7 +34,7 @@ public abstract class Item {
     }
 
     public void setUser(User user) {
-        this.bookUser = user;
+        this.itemUser = user;
     }
 
     public void returnItem() {
@@ -42,5 +43,7 @@ public abstract class Item {
 
     public abstract String toString(int i);
 
-    public abstract String resultMessage();
+    public abstract String checkoutResultMessage();
+    public abstract String returnResultMessage(User currentUser);
+
 }

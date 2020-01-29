@@ -79,12 +79,12 @@ public class BibliotecaApp {
                 checkMovie();
                 break;
             case RETURN_MOVIES:
-                returnMovies();
+                returnMovie();
                 break;
             case ACCOUNT_INFO:
                 System.out.println(currentUser.toString());
                 break;
-            case 0:
+            case EXIT:
                 System.exit(0);
             default:
                 System.out.println("Please select a valid option!\n");
@@ -126,7 +126,7 @@ public class BibliotecaApp {
         System.out.println(books.returnItem(index, currentUser));
     }
 
-    public static void returnMovies() {
+    public static void returnMovie() {
         System.out.println("Choose the movie you want to return: ");
         movies.getUserItemsList(currentUser);
         int index = input.nextInt();
