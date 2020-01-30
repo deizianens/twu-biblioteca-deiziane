@@ -15,19 +15,25 @@ public class LibrarySection {
     }
 
     public void getAvailableItemsList() {
-        for(int i = 0; i < itemList.size(); i++) {
-            if(!itemList.get(i).isCheckedOut()) {
-                System.out.println(itemList.get(i).toString(i));
+        if(itemList.size() > 0) {
+            for (int i = 0; i < itemList.size(); i++) {
+                if (!itemList.get(i).isCheckedOut()) {
+                    System.out.println(itemList.get(i).toString(i));
+                }
             }
         }
+        System.out.println("There aren't any items on this library");
     }
 
     public void getUserItemsList(User currentUser) {
-        for(int i = 0; i < itemList.size(); i++) {
-            if(itemList.get(i).isCheckedOut() && itemList.get(i).getItemUser().equals(currentUser)) {
-                System.out.println(itemList.get(i).toString(i));
+        if(itemList.size() > 0) {
+            for (int i = 0; i < itemList.size(); i++) {
+                if (itemList.get(i).isCheckedOut() && itemList.get(i).getItemUser().equals(currentUser)) {
+                    System.out.println(itemList.get(i).toString(i));
+                }
             }
         }
+        System.out.println("There aren't any items to return");
     }
 
     public String checkOutItem(int index, User currentUser) {
