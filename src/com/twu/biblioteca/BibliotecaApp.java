@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,15 +26,22 @@ public class BibliotecaApp {
 
     public static void main(String[] args) throws Exception {
         registerUser();
+        readItems("src/com/twu/biblioteca/resources/books.txt", "src/com/twu/biblioteca/resources/movies.txt");
 
-        while(true) {
-            System.out.println("1.Login\n0.Exit");
+        do {
+            login();
+        }
+        while(true);
+    }
+
+    public static void login() {
+        System.out.println("1.Login\n0.Exit");
+        try {
             int option = input.nextInt();
 
-            if(option == 1) {
-                if (login()) {
+            if (option == 1) {
+                if (validateCredentials()) {
                     System.out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
-                    readItems("src/com/twu/biblioteca/resources/books.txt", "src/com/twu/biblioteca/resources/movies.txt");
 
                     while (true) {
                         showMenu();
@@ -41,15 +49,21 @@ public class BibliotecaApp {
                 } else {
                     System.out.println("Invalid user, please digit your credentials again.");
                 }
-            }
-            else {
+            } else if (option == EXIT) {
                 System.out.println("Bye!");
                 System.exit(0);
             }
+            else {
+                System.out.println("Please select a valid option!");
+            }
+        }
+        catch (InputMismatchException e) {
+            System.out.println("Please select a valid option!");
+            input.next();
         }
     }
 
-    public static boolean login() {
+    public static boolean validateCredentials() {
         System.out.println("Digit your credentials\nLibrary Number");
         String libraryNumber = input.next();
         System.out.println("Password:");
