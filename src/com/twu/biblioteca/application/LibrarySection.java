@@ -22,7 +22,9 @@ public class LibrarySection {
                 }
             }
         }
-        System.out.println("There aren't any items on this library");
+        else {
+            System.out.println("There aren't any items on this library");
+        }
     }
 
     public void getUserItemsList(User currentUser) {
@@ -33,7 +35,9 @@ public class LibrarySection {
                 }
             }
         }
-        System.out.println("There aren't any items to return");
+        else {
+            System.out.println("There aren't any items to return");
+        }
     }
 
     public String checkOutItem(int index, User currentUser) {

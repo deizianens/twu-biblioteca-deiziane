@@ -29,37 +29,43 @@ public class BibliotecaApp {
         readItems("src/com/twu/biblioteca/resources/books.txt", "src/com/twu/biblioteca/resources/movies.txt");
 
         do {
-            login();
+            mainMenu();
         }
         while(true);
     }
 
-    public static void login() {
+    public static void mainMenu() {
         System.out.println("1.Login\n0.Exit");
         try {
             int option = input.nextInt();
 
-            if (option == 1) {
-                if (validateCredentials()) {
-                    System.out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
-
-                    while (true) {
-                        showMenu();
-                    }
-                } else {
-                    System.out.println("Invalid user, please digit your credentials again.");
-                }
-            } else if (option == EXIT) {
-                System.out.println("Bye!");
-                System.exit(0);
-            }
-            else {
-                System.out.println("Please select a valid option!");
+            switch (option) {
+                case 1:
+                    login();
+                    break;
+                case EXIT:
+                    System.out.println("Bye!");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Please select a valid option!");
             }
         }
         catch (InputMismatchException e) {
             System.out.println("Please select a valid option!");
             input.next();
+        }
+    }
+
+    public static void login() {
+        if (validateCredentials()) {
+            System.out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
+
+            while (true) {
+                showMenu();
+            }
+        } else {
+            System.out.println("Invalid user, please digit your credentials again.");
         }
     }
 
