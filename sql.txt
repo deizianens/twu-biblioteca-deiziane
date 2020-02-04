@@ -1,8 +1,8 @@
-1. Who checked out the book 'The Hobbit’?
+**1. Who checked out the book 'The Hobbit’?**
 
-SELECT member.name 
+SELECT member.name
 FROM member, checkout_item,  book 
-WHERE member.id=checkout_item.member_id AND book.id=checkout_item.book_id AND book.title=“The Hobbit”;
+WHERE member.id=checkout_item.member_id AND book.id=checkout_item.book_id AND book.title=“The Hobbit”;`
 
 2. How many people have not checked out anything?
 
