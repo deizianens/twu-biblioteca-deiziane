@@ -4,7 +4,7 @@ SELECT member.name
 FROM member, checkout_item,  book 
 WHERE member.id=checkout_item.member_id AND book.id=checkout_item.book_id AND book.title=“The Hobbit”;
 
-**2. How many people have not checked out anything? **
+**2. How many people have not checked out anything?**
 
 SELECT COUNT(*) FROM member WHERE member.id NOT IN (
   SELECT member_id FROM checkout_item
