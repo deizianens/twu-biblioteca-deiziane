@@ -27,3 +27,12 @@ INSERT INTO checkout_item VALUES(43, 11, NULL);
 SELECT member.name 
 FROM member, checkout_item, book 
 WHERE member.id=checkout_item.member_id AND book.id=checkout_item.book_id AND book.title=“The Pragmatic Programmer”;
+
+5. Who has checked out more than 1 item?  Tip: Research the GROUP BY syntax.
+
+SELECT name FROM member 
+WHERE id in
+  (SELECT member_id 
+   FROM  checkout_item 
+   GROUP BY member_id
+   HAVING COUNT(member_id) > 1)
